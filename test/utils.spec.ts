@@ -123,6 +123,7 @@ describe('test isPointOnShapeBorder', () => {
         },
       ),
     ).equal(true);
+    //
 
     expect(
       isPointOnShapeBorder(
