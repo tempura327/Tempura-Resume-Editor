@@ -3,27 +3,30 @@ type Coordinate = {
   y: number;
 };
 
-type Shape =
-  | {
-      type: 'rectangle';
-      left: number;
-      top: number;
-      width: number;
-      height: number;
-    }
-  | {
-      type: 'circle';
-      centerX: number;
-      centerY: number;
-      radius: number;
-    }
-  | {
-      type: 'ellipse';
-      centerX: number;
-      centerY: number;
-      radiusX: number;
-      radiusY: number;
-    };
+type Rectangle = {
+  type: 'rectangle';
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+};
+
+type Circle = {
+  type: 'circle';
+  centerX: number;
+  centerY: number;
+  radius: number;
+};
+
+type Ellipse = {
+  type: 'ellipse';
+  centerX: number;
+  centerY: number;
+  radiusX: number;
+  radiusY: number;
+};
+
+type Shape = Rectangle | Circle | Ellipse;
 
 export const isPointInsideShape = ({ x, y }: Coordinate, shape: Shape) => {
   switch (shape.type) {
@@ -97,4 +100,61 @@ export const isPointOnShapeBorder = (
     default:
       throw new Error('Unsupported shape type');
   }
+};
+
+// ------------------  draw  ----------------------------
+
+type ShapeCommonOptions = {
+  color?: string;
+  isFilled?: boolean;
+};
+
+export type RectOptions = Omit<Rectangle, 'type'> & ShapeCommonOptions;
+
+export const drawRect = (
+  ctx: CanvasRenderingContext2D,
+  { left, top, width, height, color = 'gold', isFilled = false }: RectOptions,
+) => {
+  if (isFilled) {
+    ctx.fillStyle = color;
+    ctx.fillRect(left, top, width, height);
+  } else {
+    ctx.strokeStyle = color;
+    ctx.strokeRect(left, top, width, height);
+  }
+};
+
+type CircleOptions = Omit<Circle, 'type'> &
+  ShapeCommonOptions & {
+    angle?: number;
+  };
+
+export const drawCircle = (
+  ctx: CanvasRenderingContext2D,
+  {
+    centerX,
+    centerY,
+    radius,
+    angle = Math.PI * 2,
+    color = 'gold',
+    isFilled,
+  }: CircleOptions,
+) => {
+  ctx.beginPath();
+  // false代表順時針
+  ctx.arc(centerX, centerY, radius, 0, angle, false);
+
+  // 畫扇形
+  if (angle < Math.PI * 2) {
+    ctx.lineTo(centerX, centerY);
+    ctx.lineTo(centerX + radius, centerY);
+  }
+
+  if (isFilled) {
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+  ctx.strokeStyle = color;
+  ctx.stroke();
 };
