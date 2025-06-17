@@ -114,51 +114,38 @@ export const isPointOnShapeBorder = (
 
 // ------------------  draw  ----------------------------
 
+const DEFAULT_COLOR = '#cccccc';
+const FULL_ANGLE = Math.PI * 2;
+
 type ShapeCommonOptions = {
   color?: string;
   isFilled?: boolean;
 };
 
-export type RectOptions = Omit<Rectangle, 'type'> & ShapeCommonOptions;
+type RectOptions = Rectangle & ShapeCommonOptions;
 
 export const drawRect = (
   ctx: CanvasRenderingContext2D,
-  { x, y, width, height, color = 'gold', isFilled = false }: RectOptions,
+  { x, y, width, height, color = DEFAULT_COLOR, isFilled }: RectOptions,
 ) => {
   if (isFilled) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, width, height);
-  } else {
-    ctx.strokeStyle = color;
-    ctx.strokeRect(x, y, width, height);
   }
+
+  ctx.strokeStyle = color;
+  ctx.strokeRect(x, y, width, height);
 };
 
-type CircleOptions = Omit<Circle, 'type'> &
-  ShapeCommonOptions & {
-    angle?: number;
-  };
+type CircleOptions = Circle & ShapeCommonOptions;
 
 export const drawCircle = (
   ctx: CanvasRenderingContext2D,
-  {
-    centerX,
-    centerY,
-    radius,
-    angle = Math.PI * 2,
-    color = 'gold',
-    isFilled,
-  }: CircleOptions,
+  { centerX, centerY, radius, color = DEFAULT_COLOR, isFilled }: CircleOptions,
 ) => {
   ctx.beginPath();
   // false代表順時針
-  ctx.arc(centerX, centerY, radius, 0, angle, false);
-
-  // 畫扇形
-  if (angle < Math.PI * 2) {
-    ctx.lineTo(centerX, centerY);
-    ctx.lineTo(centerX + radius, centerY);
-  }
+  ctx.arc(centerX, centerY, radius, 0, FULL_ANGLE, false);
 
   if (isFilled) {
     ctx.fillStyle = color;
@@ -167,4 +154,54 @@ export const drawCircle = (
 
   ctx.strokeStyle = color;
   ctx.stroke();
+};
+
+type EllipseOptions = Ellipse &
+  ShapeCommonOptions & {
+    rotation?: number;
+  };
+
+export const drawEllipse = (
+  ctx: CanvasRenderingContext2D,
+  {
+    centerX,
+    centerY,
+    radiusX,
+    radiusY,
+    color = DEFAULT_COLOR,
+    isFilled,
+    rotation = 0,
+  }: EllipseOptions,
+) => {
+  ctx.beginPath();
+
+  ctx.ellipse(centerX, centerY, radiusX, radiusY, rotation, 0, FULL_ANGLE);
+
+  if (isFilled) {
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+  ctx.strokeStyle = color;
+  ctx.stroke();
+};
+
+export type ShapeOptions = RectOptions | CircleOptions | EllipseOptions;
+
+export const drawShape = (
+  ctx: CanvasRenderingContext2D,
+  data: ShapeOptions,
+) => {
+  switch (data.type) {
+    case 'rectangle':
+      drawRect(ctx, data);
+      break;
+    case 'circle':
+      drawCircle(ctx, data);
+      break;
+    case 'ellipse':
+      drawEllipse(ctx, data);
+      break;
+    default:
+  }
 };
