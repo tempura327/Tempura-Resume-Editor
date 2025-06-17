@@ -187,3 +187,21 @@ export const drawEllipse = (
 };
 
 export type ShapeOptions = RectOptions | CircleOptions | EllipseOptions;
+
+export const drawShape = (
+  ctx: CanvasRenderingContext2D,
+  data: ShapeOptions,
+) => {
+  switch (data.type) {
+    case 'rectangle':
+      drawRect(ctx, data);
+      break;
+    case 'circle':
+      drawCircle(ctx, data);
+      break;
+    case 'ellipse':
+      drawEllipse(ctx, data);
+      break;
+    default:
+  }
+};
