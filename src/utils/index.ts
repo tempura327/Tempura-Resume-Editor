@@ -5,8 +5,8 @@ type Coordinate = {
 
 type Rectangle = {
   type: 'rectangle';
-  left: number;
-  top: number;
+  x: number;
+  y: number;
   width: number;
   height: number;
 };
@@ -28,22 +28,30 @@ type Ellipse = {
 
 type Shape = Rectangle | Circle | Ellipse;
 
-export const isPointInsideShape = ({ x, y }: Coordinate, shape: Shape) => {
+export const isPointInsideShape = (
+  { x: pointX, y: pointY }: Coordinate,
+  shape: Shape,
+) => {
   switch (shape.type) {
     case 'rectangle': {
-      const { left, top, width, height } = shape;
-      return x >= left && x <= left + width && y >= top && y <= top + height;
+      const { x, y, width, height } = shape;
+      return (
+        pointX >= x &&
+        pointX <= x + width &&
+        pointY >= y &&
+        pointY <= y + height
+      );
     }
     case 'circle': {
       const { centerX, centerY, radius } = shape;
-      const dx = x - centerX;
-      const dy = y - centerY;
+      const dx = pointX - centerX;
+      const dy = pointY - centerY;
       return dx * dx + dy * dy <= radius * radius;
     }
     case 'ellipse': {
       const { centerX, centerY, radiusX, radiusY } = shape;
-      const dx = x - centerX;
-      const dy = y - centerY;
+      const dx = pointX - centerX;
+      const dy = pointY - centerY;
       return (
         (dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1
       );
@@ -54,34 +62,36 @@ export const isPointInsideShape = ({ x, y }: Coordinate, shape: Shape) => {
 };
 
 export const isPointOnShapeBorder = (
-  { x, y }: Coordinate,
+  { x: pointX, y: pointY }: Coordinate,
   shape: Shape,
   tolerance = 2,
 ) => {
   switch (shape.type) {
     case 'rectangle': {
-      const { left, top, width, height } = shape;
+      const { x, y, width, height } = shape;
 
       const onLeft =
-        Math.abs(x - left) <= tolerance && y >= top && y <= top + height;
+        Math.abs(pointX - x) <= tolerance &&
+        pointY >= y &&
+        pointY <= y + height;
       const onRight =
-        Math.abs(x - (left + width)) <= tolerance &&
-        y >= top &&
-        y <= top + height;
+        Math.abs(pointX - (x + width)) <= tolerance &&
+        pointY >= y &&
+        pointY <= y + height;
       const onTop =
-        Math.abs(y - top) <= tolerance && x >= left && x <= left + width;
+        Math.abs(pointY - y) <= tolerance && pointX >= x && pointX <= x + width;
       const onBottom =
-        Math.abs(y - (top + height)) <= tolerance &&
-        x >= left &&
-        x <= left + width;
+        Math.abs(pointY - (y + height)) <= tolerance &&
+        pointX >= x &&
+        pointX <= x + width;
 
       return onLeft || onRight || onTop || onBottom;
     }
 
     case 'circle': {
       const { centerX, centerY, radius } = shape;
-      const dx = x - centerX;
-      const dy = y - centerY;
+      const dx = pointX - centerX;
+      const dy = pointY - centerY;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       return Math.abs(distance - radius) <= tolerance;
@@ -89,8 +99,8 @@ export const isPointOnShapeBorder = (
 
     case 'ellipse': {
       const { centerX, centerY, radiusX, radiusY } = shape;
-      const dx = x - centerX;
-      const dy = y - centerY;
+      const dx = pointX - centerX;
+      const dy = pointY - centerY;
       const value =
         (dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY);
 
@@ -113,14 +123,14 @@ export type RectOptions = Omit<Rectangle, 'type'> & ShapeCommonOptions;
 
 export const drawRect = (
   ctx: CanvasRenderingContext2D,
-  { left, top, width, height, color = 'gold', isFilled = false }: RectOptions,
+  { x, y, width, height, color = 'gold', isFilled = false }: RectOptions,
 ) => {
   if (isFilled) {
     ctx.fillStyle = color;
-    ctx.fillRect(left, top, width, height);
+    ctx.fillRect(x, y, width, height);
   } else {
     ctx.strokeStyle = color;
-    ctx.strokeRect(left, top, width, height);
+    ctx.strokeRect(x, y, width, height);
   }
 };
 
