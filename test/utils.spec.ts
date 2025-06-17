@@ -9,8 +9,8 @@ describe('test isPointInsideShape', () => {
         { x: 1, y: 1 },
         {
           type: 'rectangle',
-          left: 0,
-          top: 0,
+          x: 0,
+          y: 0,
           width: 20,
           height: 20,
         },
@@ -22,8 +22,8 @@ describe('test isPointInsideShape', () => {
         { x: 45, y: 3 },
         {
           type: 'rectangle',
-          left: 0,
-          top: 0,
+          x: 0,
+          y: 0,
           width: 20,
           height: 20,
         },
@@ -77,8 +77,8 @@ describe('test isPointOnShapeBorder', () => {
         { x: 0, y: 5 },
         {
           type: 'rectangle',
-          left: 0,
-          top: 0,
+          x: 0,
+          y: 0,
           width: 20,
           height: 20,
         },
@@ -90,8 +90,8 @@ describe('test isPointOnShapeBorder', () => {
         { x: 5, y: 5 },
         {
           type: 'rectangle',
-          left: 0,
-          top: 0,
+          x: 0,
+          y: 0,
           width: 20,
           height: 20,
         },
