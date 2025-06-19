@@ -1,16 +1,20 @@
-# Todo List
+# To do List
 
-- [ ] 畫方形的func
-- [ ] 畫圓形的func
-- [ ] 文字的func
-- [ ] 檢查是不是在border內的func
-- [ ] 檢查是不是在border上的func
+- [x] 畫方形的func
+- [x] 畫圓形的func
+- [x] 畫橢圓形的func
+- [x] 畫文字的func
+- [ ] 畫圖片的func
+- [x] 檢查是不是在border內的func
+- [x] 檢查是不是在border上的func
 - [ ] target的func
-- [ ] drag的func
-- [ ] resize的func
+- [ ] drag shape的func
+- [ ] drag to create shape的func
+- [ ] resize shape的func
+- [ ] rotate shape的func(opt)
 - [ ] 滑到border上時改變cursor圖示
-- [ ] 畫整個layout的func
-- [ ] 放置一個canvas到頁面，並取得canvas的context
+- [x] 畫整個layout的func
+- [x] 放置一個canvas到頁面，並取得canvas的context
 - [ ] 將canvas輸出成pdf
 - [ ] 選擇template的功能
 - [ ] 輸入資料的表單
