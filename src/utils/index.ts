@@ -26,7 +26,16 @@ type Ellipse = {
   radiusY: number;
 };
 
-type Shape = Rectangle | Circle | Ellipse;
+type Text = {
+  type: 'text';
+  x: number;
+  y: number;
+  text: string;
+  fontSize?: number;
+  fontFamily?: string;
+};
+
+type Shape = Rectangle | Circle | Ellipse | Text;
 
 export const isPointInsideShape = (
   { x: pointX, y: pointY }: Coordinate,
@@ -116,6 +125,8 @@ export const isPointOnShapeBorder = (
 
 const DEFAULT_COLOR = '#cccccc';
 const FULL_ANGLE = Math.PI * 2;
+const DEFAULT_FONT_SIZE = 16;
+const DEFAULT_FONT_FAMILY = 'Arial, sans-serif';
 
 type ShapeCommonOptions = {
   color?: string;
@@ -186,7 +197,37 @@ export const drawEllipse = (
   ctx.stroke();
 };
 
-export type ShapeOptions = RectOptions | CircleOptions | EllipseOptions;
+type TextOptions = Text & ShapeCommonOptions;
+
+export const drawText = (
+  ctx: CanvasRenderingContext2D,
+  {
+    x,
+    y,
+    text,
+    fontSize = DEFAULT_FONT_SIZE,
+    fontFamily = DEFAULT_FONT_FAMILY,
+    color = DEFAULT_COLOR,
+    isFilled = true,
+  }: TextOptions,
+) => {
+  ctx.textBaseline = 'top';
+  ctx.font = `${fontSize}px ${fontFamily}`;
+
+  if (isFilled) {
+    ctx.fillStyle = color;
+    ctx.fillText(text, x, y);
+  } else {
+    ctx.strokeStyle = color;
+    ctx.strokeText(text, x, y);
+  }
+};
+
+export type ShapeOptions =
+  | RectOptions
+  | CircleOptions
+  | EllipseOptions
+  | TextOptions;
 
 export const drawShape = (
   ctx: CanvasRenderingContext2D,
@@ -201,6 +242,9 @@ export const drawShape = (
       break;
     case 'ellipse':
       drawEllipse(ctx, data);
+      break;
+    case 'text':
+      drawText(ctx, data);
       break;
     default:
   }
