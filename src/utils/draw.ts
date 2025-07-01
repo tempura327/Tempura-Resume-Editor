@@ -4,6 +4,7 @@ import {
   CircleOptions,
   EllipseOptions,
   TextOptions,
+  ImageOptions,
   ElementOptions,
 } from './type';
 
@@ -110,6 +111,36 @@ export const drawShape = (
   }
 };
 
+export const drawImage = (
+  ctx: CanvasRenderingContext2D,
+  { src, x, y, width, height, opacity, shape }: ImageOptions,
+) => {
+  const img = new Image(width, height);
+  img.src = src;
+
+  img.onload = () => {
+    ctx.save();
+
+    if (opacity) {
+      ctx.globalAlpha = opacity;
+    }
+
+    if (shape) {
+      ctx.beginPath();
+
+      drawShape(ctx, shape);
+
+      ctx.clip();
+
+      ctx.drawImage(img, x, y, width, height);
+    } else {
+      ctx.drawImage(img, x, y, width, height);
+    }
+
+    ctx.restore();
+  };
+};
+
 export const drawElement = (
   ctx: CanvasRenderingContext2D,
   data: ElementOptions,
@@ -126,6 +157,9 @@ export const drawElement = (
       break;
     case 'text':
       drawText(ctx, data);
+      break;
+    case 'image':
+      drawImage(ctx, data);
       break;
     default:
   }

@@ -37,6 +37,16 @@ export type Text = {
   fontFamily?: string;
 };
 
+export type Image = {
+  type: 'image';
+  src: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  shape?: Shape;
+};
+
 type ElementCommonOptions = {
   color?: string;
   opacity?: number;
@@ -56,4 +66,6 @@ export type ShapeOptions = RectOptions | CircleOptions | EllipseOptions;
 
 export type TextOptions = Text & ElementCommonOptions;
 
-export type ElementOptions = ShapeOptions | TextOptions;
+export type ImageOptions = Image & Pick<ElementCommonOptions, 'opacity'>;
+
+export type ElementOptions = ShapeOptions | TextOptions | ImageOptions;
