@@ -4,17 +4,20 @@
 - [x] 畫圓形的func
 - [x] 畫橢圓形的func
 - [x] 畫文字的func
-- [ ] 畫圖片的func
+- [x] 畫圖片的func
 - [x] 檢查是不是在border內的func
 - [x] 檢查是不是在border上的func
 - [ ] target的func
 - [ ] drag shape的func
 - [ ] drag to create shape的func
+- [ ] move image which is in a shape的func
 - [ ] resize shape的func
 - [ ] rotate shape的func(opt)
 - [ ] 滑到border上時改變cursor圖示
 - [x] 畫整個layout的func
 - [x] 放置一個canvas到頁面，並取得canvas的context
+- [ ] color picker
+- [ ] 可以選擇各種圖形、顏色的工具列
 - [ ] 將canvas輸出成pdf
 - [ ] 選擇template的功能
 - [ ] 輸入資料的表單
