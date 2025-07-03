@@ -1,11 +1,12 @@
-import { Coordinate, Shape } from './type';
+import { Coordinate, Shape, Element } from './type';
 
 export const isPointInsideShape = (
   { x: pointX, y: pointY }: Coordinate,
-  shape: Shape,
+  shape: Element,
 ) => {
   switch (shape.type) {
-    case 'rectangle': {
+    case 'rectangle':
+    case 'image': {
       const { x, y, width, height } = shape;
       return (
         pointX >= x &&
@@ -28,6 +29,9 @@ export const isPointInsideShape = (
         (dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1
       );
     }
+    // case 'text': {
+    //   const { x, y } = shape;
+    // }
     default:
       throw new Error('Unsupported shape type');
   }

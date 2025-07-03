@@ -47,8 +47,11 @@ export type Image = {
   shape?: Shape;
 };
 
+export type Element = Shape | Text | Image;
+
 type ElementCommonOptions = {
   color?: string;
+  strokeColor?: string;
   opacity?: number;
   isFilled?: boolean;
 };
@@ -66,6 +69,7 @@ export type ShapeOptions = RectOptions | CircleOptions | EllipseOptions;
 
 export type TextOptions = Text & ElementCommonOptions;
 
-export type ImageOptions = Image & Pick<ElementCommonOptions, 'opacity'>;
+export type ImageOptions = Image &
+  Pick<ElementCommonOptions, 'opacity' | 'strokeColor'>;
 
 export type ElementOptions = ShapeOptions | TextOptions | ImageOptions;

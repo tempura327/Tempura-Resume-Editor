@@ -15,20 +15,35 @@ const DEFAULT_FONT_FAMILY = 'Arial, sans-serif';
 
 export const drawRect = (
   ctx: CanvasRenderingContext2D,
-  { x, y, width, height, color = DEFAULT_COLOR, isFilled }: RectOptions,
+  {
+    x,
+    y,
+    width,
+    height,
+    color = DEFAULT_COLOR,
+    strokeColor = color,
+    isFilled,
+  }: RectOptions,
 ) => {
   if (isFilled) {
     ctx.fillStyle = color;
     ctx.fillRect(x, y, width, height);
   }
 
-  ctx.strokeStyle = color;
+  ctx.strokeStyle = strokeColor;
   ctx.strokeRect(x, y, width, height);
 };
 
 export const drawCircle = (
   ctx: CanvasRenderingContext2D,
-  { centerX, centerY, radius, color = DEFAULT_COLOR, isFilled }: CircleOptions,
+  {
+    centerX,
+    centerY,
+    radius,
+    color = DEFAULT_COLOR,
+    strokeColor = color,
+    isFilled,
+  }: CircleOptions,
 ) => {
   ctx.beginPath();
   // false代表順時針
@@ -39,7 +54,7 @@ export const drawCircle = (
     ctx.fill();
   }
 
-  ctx.strokeStyle = color;
+  ctx.strokeStyle = strokeColor;
   ctx.stroke();
 };
 
@@ -51,6 +66,7 @@ export const drawEllipse = (
     radiusX,
     radiusY,
     color = DEFAULT_COLOR,
+    strokeColor = color,
     isFilled,
     rotation = 0,
   }: EllipseOptions,
@@ -64,7 +80,7 @@ export const drawEllipse = (
     ctx.fill();
   }
 
-  ctx.strokeStyle = color;
+  ctx.strokeStyle = strokeColor;
   ctx.stroke();
 };
 
@@ -77,6 +93,7 @@ export const drawText = (
     fontSize = DEFAULT_FONT_SIZE,
     fontFamily = DEFAULT_FONT_FAMILY,
     color = DEFAULT_COLOR,
+    strokeColor = color,
     isFilled = true,
   }: TextOptions,
 ) => {
@@ -87,7 +104,7 @@ export const drawText = (
     ctx.fillStyle = color;
     ctx.fillText(text, x, y);
   } else {
-    ctx.strokeStyle = color;
+    ctx.strokeStyle = strokeColor;
     ctx.strokeText(text, x, y);
   }
 };
