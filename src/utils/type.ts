@@ -13,15 +13,15 @@ export type Rectangle = {
 
 export type Circle = {
   type: 'circle';
-  centerX: number;
-  centerY: number;
+  x: number;
+  y: number;
   radius: number;
 };
 
 export type Ellipse = {
   type: 'ellipse';
-  centerX: number;
-  centerY: number;
+  x: number;
+  y: number;
   radiusX: number;
   radiusY: number;
 };

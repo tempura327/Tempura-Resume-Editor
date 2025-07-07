@@ -10,8 +10,8 @@ const initialGridData: ElementOptions[] = [
   {
     type: 'circle',
     radius: 100,
-    centerX: 200,
-    centerY: 250,
+    x: 125,
+    y: 125,
     isFilled: true,
     color: '#4A593D',
   },
@@ -52,11 +52,10 @@ const initialGridData: ElementOptions[] = [
     shape: {
       type: 'circle',
       radius: 100,
-      centerX: 200,
-      centerY: 600,
+      x: 100,
+      y: 500,
     },
   },
-
   {
     type: 'image',
     src: 'https://images.unsplash.com/photo-1649980089975-c3e5c2d73ad8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -67,8 +66,8 @@ const initialGridData: ElementOptions[] = [
     shape: {
       type: 'circle',
       radius: 100,
-      centerX: 450,
-      centerY: 600,
+      x: 350,
+      y: 500,
     },
   },
   {
@@ -81,11 +80,10 @@ const initialGridData: ElementOptions[] = [
     shape: {
       type: 'circle',
       radius: 100,
-      centerX: 800,
-      centerY: 600,
+      x: 700,
+      y: 600,
     },
   },
-
   {
     type: 'image',
     src: 'https://images.unsplash.com/photo-1749497683202-d3073573d996?q=80&w=1247&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -97,9 +95,23 @@ const initialGridData: ElementOptions[] = [
       type: 'ellipse',
       radiusX: 150,
       radiusY: 100,
-      centerX: 200,
-      centerY: 950,
+      x: 50,
+      y: 800,
     },
+  },
+  {
+    type: 'text',
+    x: 300,
+    y: 360,
+    text: 'Hello',
+    color: 'amber',
+  },
+  {
+    type: 'rectangle',
+    x: 300,
+    y: 360,
+    width: 36,
+    height: 100,
   },
 ];
 

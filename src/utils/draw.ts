@@ -28,8 +28,11 @@ export const drawRect = (
 
 export const drawCircle = (
   ctx: CanvasRenderingContext2D,
-  { centerX, centerY, radius, color = DEFAULT_COLOR, isFilled }: CircleOptions,
+  { x, y, radius, color = DEFAULT_COLOR, isFilled }: CircleOptions,
 ) => {
+  const centerX = x + radius;
+  const centerY = y + radius;
+
   ctx.beginPath();
   // false代表順時針
   ctx.arc(centerX, centerY, radius, 0, FULL_ANGLE, false);
@@ -46,8 +49,8 @@ export const drawCircle = (
 export const drawEllipse = (
   ctx: CanvasRenderingContext2D,
   {
-    centerX,
-    centerY,
+    x,
+    y,
     radiusX,
     radiusY,
     color = DEFAULT_COLOR,
@@ -55,6 +58,9 @@ export const drawEllipse = (
     rotation = 0,
   }: EllipseOptions,
 ) => {
+  const centerX = x + radiusX;
+  const centerY = y + radiusY;
+
   ctx.beginPath();
 
   ctx.ellipse(centerX, centerY, radiusX, radiusY, rotation, 0, FULL_ANGLE);
@@ -90,6 +96,9 @@ export const drawText = (
     ctx.strokeStyle = color;
     ctx.strokeText(text, x, y);
   }
+
+  // const res = ctx.measureText(text);
+  // console.log(res.width); // 56;
 };
 
 export const drawShape = (
