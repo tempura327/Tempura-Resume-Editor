@@ -13,15 +13,15 @@ export type Rectangle = {
 
 export type Circle = {
   type: 'circle';
-  centerX: number;
-  centerY: number;
+  x: number;
+  y: number;
   radius: number;
 };
 
 export type Ellipse = {
   type: 'ellipse';
-  centerX: number;
-  centerY: number;
+  x: number;
+  y: number;
   radiusX: number;
   radiusY: number;
 };
@@ -32,6 +32,8 @@ export type Text = {
   type: 'text';
   x: number;
   y: number;
+  width: number;
+  height: number;
   text: string;
   fontSize?: number;
   fontFamily?: string;
@@ -46,6 +48,8 @@ export type Image = {
   height: number;
   shape?: Shape;
 };
+
+export type Element = Shape | Text | Image;
 
 type ElementCommonOptions = {
   color?: string;
