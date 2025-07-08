@@ -103,6 +103,8 @@ const initialGridData: ElementOptions[] = [
     type: 'text',
     x: 300,
     y: 360,
+    width: 36,
+    height: 20,
     text: 'Hello',
     color: 'amber',
   },
@@ -111,7 +113,16 @@ const initialGridData: ElementOptions[] = [
     x: 300,
     y: 360,
     width: 36,
-    height: 100,
+    height: 12,
+  },
+  {
+    type: 'ellipse',
+    radiusX: 75,
+    radiusY: 50,
+    x: 400,
+    y: 800,
+    color: '#BCB8B1',
+    isFilled: true,
   },
 ];
 

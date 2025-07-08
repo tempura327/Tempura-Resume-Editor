@@ -1,11 +1,13 @@
-import { Coordinate, Shape } from './type';
+import { Coordinate, Element } from './type';
 
 export const isPointInsideShape = (
   { x: pointX, y: pointY }: Coordinate,
-  shape: Shape,
+  shape: Element,
 ) => {
   switch (shape.type) {
-    case 'rectangle': {
+    // TODO: image
+    case 'rectangle':
+    case 'text': {
       const { x, y, width, height } = shape;
       return (
         pointX >= x &&
@@ -15,31 +17,39 @@ export const isPointInsideShape = (
       );
     }
     case 'circle': {
-      const { centerX, centerY, radius } = shape;
+      const { x, y, radius } = shape;
+      const centerX = x + radius;
+      const centerY = y + radius;
       const dx = pointX - centerX;
       const dy = pointY - centerY;
+
       return dx * dx + dy * dy <= radius * radius;
     }
     case 'ellipse': {
-      const { centerX, centerY, radiusX, radiusY } = shape;
+      const { x, y, radiusX, radiusY } = shape;
+      const centerX = x + radiusX;
+      const centerY = y + radiusY;
       const dx = pointX - centerX;
       const dy = pointY - centerY;
+
       return (
         (dx * dx) / (radiusX * radiusX) + (dy * dy) / (radiusY * radiusY) <= 1
       );
     }
     default:
-      throw new Error('Unsupported shape type');
+      throw new Error('Unsupported element type');
   }
 };
 
 export const isPointOnShapeBorder = (
   { x: pointX, y: pointY }: Coordinate,
-  shape: Shape,
+  shape: Element,
   tolerance = 2,
 ) => {
   switch (shape.type) {
-    case 'rectangle': {
+    // TODO: image
+    case 'rectangle':
+    case 'text': {
       const { x, y, width, height } = shape;
 
       const onLeft =
@@ -61,7 +71,9 @@ export const isPointOnShapeBorder = (
     }
 
     case 'circle': {
-      const { centerX, centerY, radius } = shape;
+      const { x, y, radius } = shape;
+      const centerX = x + radius;
+      const centerY = y + radius;
       const dx = pointX - centerX;
       const dy = pointY - centerY;
       const distance = Math.sqrt(dx * dx + dy * dy);
@@ -70,7 +82,9 @@ export const isPointOnShapeBorder = (
     }
 
     case 'ellipse': {
-      const { centerX, centerY, radiusX, radiusY } = shape;
+      const { x, y, radiusX, radiusY } = shape;
+      const centerX = x + radiusX;
+      const centerY = y + radiusY;
       const dx = pointX - centerX;
       const dy = pointY - centerY;
       const value =
@@ -80,6 +94,6 @@ export const isPointOnShapeBorder = (
     }
 
     default:
-      throw new Error('Unsupported shape type');
+      throw new Error('Unsupported element type');
   }
 };

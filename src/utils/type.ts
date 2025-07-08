@@ -32,6 +32,8 @@ export type Text = {
   type: 'text';
   x: number;
   y: number;
+  width: number;
+  height: number;
   text: string;
   fontSize?: number;
   fontFamily?: string;
@@ -46,6 +48,8 @@ export type Image = {
   height: number;
   shape?: Shape;
 };
+
+export type Element = Shape | Text | Image;
 
 type ElementCommonOptions = {
   color?: string;

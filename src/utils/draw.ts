@@ -96,9 +96,6 @@ export const drawText = (
     ctx.strokeStyle = color;
     ctx.strokeText(text, x, y);
   }
-
-  // const res = ctx.measureText(text);
-  // console.log(res.width); // 56;
 };
 
 export const drawShape = (
