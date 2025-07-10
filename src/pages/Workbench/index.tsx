@@ -1,10 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { drawElement, ElementOptions } from '@/utils/index';
+import { drawElement, ElementOptions, Element } from '@/utils/index';
 
 const A4_RATIO = 1.38;
 const CANVAS_WIDTH = window.innerWidth * 0.66;
 const CANVAS_HEIGHT = CANVAS_WIDTH * A4_RATIO;
+
+enum CanvasStatus {
+  // 選定將加入的元素
+  Selected = 'SELECTED',
+  // 選定已存在的元素
+  Targeted = 'TARGETED',
+  // 操作元素
+  Manipulate = 'MANIPULATE',
+}
 
 const initialGridData: ElementOptions[] = [
   {
@@ -133,6 +142,16 @@ const Workbench = () => {
 
   const [gridData] = useState(initialGridData);
   const [assistantGridData] = useState<ElementOptions[]>([]);
+  const [pendingElementData, setPendingElementData] =
+    useState<Partial<Element>>();
+  const [canvasStatus, setCanvasStatus] = useState<CanvasStatus | null>(null);
+
+  const handleSelectElement = (elementType: Element['type']) => {
+    setPendingElementData({
+      type: elementType,
+    });
+    setCanvasStatus(CanvasStatus.Selected);
+  };
 
   useEffect(() => {
     if (canvasRef.current) {
@@ -175,7 +194,7 @@ const Workbench = () => {
             type="button"
             className="cursor-pointer text-sky-50 p-2"
             onClick={() => {
-              // TODO:
+              handleSelectElement(elementType);
             }}
           >
             {elementType}
