@@ -1,10 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
 
-import { drawElement, ElementOptions, Element } from '@/utils/index';
+import {
+  drawElement,
+  ElementOptions,
+  Element,
+  isPointInsideElement,
+  Coordinate,
+} from '@/utils/index';
 
 const A4_RATIO = 1.38;
 const CANVAS_WIDTH = window.innerWidth * 0.66;
 const CANVAS_HEIGHT = CANVAS_WIDTH * A4_RATIO;
+const INIT_SHAPE_SIZE = 20;
 
 enum CanvasStatus {
   // 選定將加入的元素
@@ -153,11 +160,64 @@ const Workbench = () => {
     setCanvasStatus(CanvasStatus.Selected);
   };
 
+  const handleAddElement = (coordinate: Coordinate) => {
+    let size = {};
+
+    if (pendingElementData?.type === 'circle') {
+      size = {
+        radius: INIT_SHAPE_SIZE,
+      };
+    }
+
+    if (pendingElementData?.type === 'rectangle') {
+      size = {
+        width: INIT_SHAPE_SIZE,
+        height: INIT_SHAPE_SIZE,
+      };
+    }
+
+    setPendingElementData((prev) => ({
+      ...prev,
+      ...coordinate,
+      ...size,
+    }));
+  };
+
+  const handleClickCanvas = (e: MouseEvent<HTMLCanvasElement>) => {
+    const coordinate = {
+      x: e.clientX - canvasCoordinate?.current.x,
+      y: e.clientY - canvasCoordinate?.current.y,
+    };
+    const targetElements = gridData.filter((data) => {
+      return isPointInsideElement(coordinate, data);
+    });
+
+    if (canvasStatus === CanvasStatus.Selected) {
+      console.log('handleAddElement');
+      handleAddElement(coordinate);
+      console.log('set to target');
+      setCanvasStatus(CanvasStatus.Targeted);
+      // TODO: 把剛剛加上去的元素設到assistantGridData、把pendingElementData清掉
+      return;
+    }
+
+    if (targetElements.length < 1 || canvasStatus === CanvasStatus.Manipulate) {
+      console.log('set to null');
+      setCanvasStatus(null);
+      return;
+    }
+
+    // TODO: 更換選擇到的已存在的元素、更新assistantGridData
+    console.log('set to target');
+    setCanvasStatus(CanvasStatus.Targeted);
+  };
+
   useEffect(() => {
     if (canvasRef.current) {
+      const { x, y } = canvasRef.current.getBoundingClientRect();
       canvasCoordinate.current = {
-        x: canvasRef.current?.offsetLeft || 0,
-        y: canvasRef.current?.offsetTop || 0,
+        x,
+        y,
       };
     }
   }, []);
@@ -212,9 +272,11 @@ const Workbench = () => {
         ></canvas>
         <canvas
           ref={assistantCanvasRef}
-          className="border border-solid border-indigo-300 absolute top-0"
+          // TODO: install clsx or some what
+          className={`border border-solid border-indigo-300 absolute top-0 ${canvasStatus === CanvasStatus.Selected ? 'cursor-crosshair' : ''}`}
           width={CANVAS_WIDTH}
           height={CANVAS_HEIGHT}
+          onClick={handleClickCanvas}
         ></canvas>
       </div>
     </div>
