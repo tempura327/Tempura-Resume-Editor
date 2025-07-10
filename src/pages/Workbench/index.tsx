@@ -166,20 +166,38 @@ const Workbench = () => {
   }, [assistantGridData]);
 
   return (
-    <div className="p-8 flex items-center justify-center">
-      <canvas
-        id="canvas"
-        ref={canvasRef}
-        className="border border-solid border-sky-300"
-        width={CANVAS_WIDTH}
-        height={CANVAS_HEIGHT}
-      ></canvas>
-      <canvas
-        ref={assistantCanvasRef}
-        className="border border-solid border-sky-300 absolute"
-        width={CANVAS_WIDTH}
-        height={CANVAS_HEIGHT}
-      ></canvas>
+    <div className="bg-neutral-900 flex flex-col items-center gap-4 p-8">
+      {/* TODO: install a UI lib which supports Tailwind 4 */}
+      <div className="flex rounded overflow-hidden bg-zinc-500 [&_button]:not-last:border-r">
+        {(['rectangle', 'circle', 'text'] as const).map((elementType) => (
+          <button
+            key={elementType}
+            type="button"
+            className="cursor-pointer text-sky-50 p-2"
+            onClick={() => {
+              // TODO:
+            }}
+          >
+            {elementType}
+          </button>
+        ))}
+      </div>
+
+      <div className="relative bg-zinc-200">
+        <canvas
+          id="canvas"
+          ref={canvasRef}
+          className="border border-solid border-sky-300"
+          width={CANVAS_WIDTH}
+          height={CANVAS_HEIGHT}
+        ></canvas>
+        <canvas
+          ref={assistantCanvasRef}
+          className="border border-solid border-indigo-300 absolute top-0"
+          width={CANVAS_WIDTH}
+          height={CANVAS_HEIGHT}
+        ></canvas>
+      </div>
     </div>
   );
 };

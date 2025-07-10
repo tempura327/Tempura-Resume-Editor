@@ -1,6 +1,6 @@
 import { Coordinate, Element } from './type';
 
-export const isPointInsideShape = (
+export const isPointInsideElement = (
   { x: pointX, y: pointY }: Coordinate,
   element: Element,
 ): boolean => {
@@ -47,10 +47,10 @@ export const isPointInsideShape = (
       };
 
       if (shape) {
-        return isPointInsideShape(pointCoordinate, shape);
+        return isPointInsideElement(pointCoordinate, shape);
       }
 
-      return isPointInsideShape(pointCoordinate, {
+      return isPointInsideElement(pointCoordinate, {
         ...rest,
         type: 'rectangle',
       });
@@ -60,7 +60,7 @@ export const isPointInsideShape = (
   }
 };
 
-export const isPointOnShapeBorder = (
+export const isPointOnElementBorder = (
   { x: pointX, y: pointY }: Coordinate,
   element: Element,
   tolerance = 2,
@@ -119,10 +119,10 @@ export const isPointOnShapeBorder = (
       };
 
       if (shape) {
-        return isPointOnShapeBorder(pointCoordinate, shape);
+        return isPointOnElementBorder(pointCoordinate, shape);
       }
 
-      return isPointOnShapeBorder(pointCoordinate, {
+      return isPointOnElementBorder(pointCoordinate, {
         ...rest,
         type: 'rectangle',
       });
