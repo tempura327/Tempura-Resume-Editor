@@ -155,10 +155,9 @@ const Workbench = () => {
 
   useEffect(() => {
     if (canvasRef.current) {
-      canvasCoordinate.current = {
-        x: canvasRef.current?.offsetLeft || 0,
-        y: canvasRef.current?.offsetTop || 0,
-      };
+      const { x, y } = canvasRef.current.getBoundingClientRect();
+
+      canvasCoordinate.current = { x, y };
     }
   }, []);
 
