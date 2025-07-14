@@ -1,25 +1,46 @@
 # To do List
 
+- [x] 放置一個canvas到頁面，並取得canvas的context
 - [x] 畫方形的func
 - [x] 畫圓形的func
 - [x] 畫橢圓形的func
 - [x] 畫文字的func
 - [x] 畫圖片的func
-- [x] 檢查是不是在border內的func
-- [x] 檢查是不是在border上的func
+- [x] 畫整個layout的func (drawElement)
+- [x] 檢查座標是不是在border內的func (isPointInsideElement)
+- [x] 檢查座標是不是在border上的func (isPointInsideOnBorder)
+- [ ] 檢查座標是不是在bounding box內的func (isPointInsideBoundingBox)
+- [ ] 檢查座標是不是在resize handle內的func (isPointInResizeHandle)
+- [ ] 畫target element的藍框、右下角調圖形尺寸的方形的func (drawSelectionFrame，bounding box、resize handle合稱selection frame)
 - [ ] target的func
+  - [ ] mouseDown canvas，叫isPointInsideBoundingBox(確認滑鼠當下座標在targetElement的bounding box內)，並將targetElement(有多個的時候一直replace，直到剩一個，或者找不到)、restElements分類
+  - [ ] setGridData 為 restElements，setAssistantGridData為targetElement
+  - [ ] 如果有找到targetElement，setCanvasStatus為Targeted，反之設為null
+  - [ ] 如果有找到targetElement，在setAssistantGridData新增一個藍色邊框的方形框住targetElement，反之設為setAssistantGridData清空
+  - [ ] 如果有找到targetElement，將canvasRef.current當中的targetElement區塊清除，反之不做事
 - [ ] drag shape的func
+  - [ ] mouseMove canvas，canvasStatus必須為Targeted，叫isPointInsideElement，setCanvasStatus為Manipulate
+  - [ ] mouseMove canvas，canvasStatus必須為Targeted，叫isPointInsideElement，計算當下滑鼠座標(e.clientX - canvasCoordinate?.current.x, e.clientY - canvasCoordinate?.current.Y)和targetElement的座標差多少
+  - [ ] 把上個步驟得到的x、y軸差距加到targetElement的x、y，然後更新assistantGridData
+  - [ ] 每次更新前記得把assistantCanvasRef.current的context整個清掉
+  - [ ] mouseUp canvas，setCanvasStatus為Targeted
 - [ ] drag to create shape的func
 - [ ] move image which is in a shape的func
 - [ ] resize shape的func
-- [ ] rotate shape的func(opt)
+  - [ ] mouseMove canvas，canvasStatus必須為Targeted，叫isPointOnResizeHandle，setCanvasStatus為Manipulate
+  - [ ] 計算當下滑鼠座標(e.clientX - canvasCoordinate?.current.x, e.clientY - canvasCoordinate?.current.Y)和targetElement的座標差多少
+  - [ ] 把上個步驟得到的x、y軸差距加到targetElement的width、height(或radius)，然後更新assistantGridData
+  - [ ] 每次更新前記得把assistantCanvasRef.current的context整個清掉
+  - [ ] mouseUp canvas，setCanvasStatus為Targeted
 - [ ] 滑到border上時改變cursor圖示
-- [x] 畫整個layout的func
-- [x] 放置一個canvas到頁面，並取得canvas的context
 - [ ] color picker
 - [ ] 可以選擇各種圖形、顏色的工具列
 - [ ] 將canvas輸出成pdf
 - [ ] 選擇template的功能
+- [ ] 安裝react-hook-form，並做基礎設定
 - [ ] 輸入資料的表單
 - [ ] 根據表單內容計算元素的width、height、x、y
+- [ ] 安裝支援Tailwind 4的UI lib，並做基礎設定
+- [ ] 安裝一個clsx、Tailwind merge之類可合併className的lib
 - [ ] 串cake拿profile(opt)
+- [ ] rotate shape的func(opt)
