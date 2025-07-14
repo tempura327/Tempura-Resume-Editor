@@ -31,115 +31,115 @@ const initialGridData: ElementOptions[] = [
     isFilled: true,
     color: '#4A593D',
   },
-  {
-    type: 'rectangle',
-    width: 500,
-    height: 180,
-    x: 400,
-    y: 80,
-    isFilled: true,
-    color: '#64363C',
-  },
-  {
-    type: 'rectangle',
-    width: 250,
-    height: 270,
-    x: 600,
-    y: 20,
-    isFilled: true,
-    color: '#6E552F',
-  },
-  {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1649980089975-c3e5c2d73ad8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    width: 387,
-    height: 518,
-    x: 700 - 100,
-    y: 600 - 300,
-    opacity: 0.3,
-  },
-  {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1649980089975-c3e5c2d73ad8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    width: 200,
-    height: 200,
-    x: 200 - 100,
-    y: 600 - 100,
-    shape: {
-      type: 'circle',
-      radius: 100,
-      x: 100,
-      y: 500,
-    },
-  },
-  {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1649980089975-c3e5c2d73ad8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    width: 200,
-    height: 259,
-    x: 450 - 100,
-    y: 600 - 100,
-    shape: {
-      type: 'circle',
-      radius: 100,
-      x: 350,
-      y: 500,
-    },
-  },
-  {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1649980089975-c3e5c2d73ad8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    width: 387,
-    height: 518,
-    x: 700 - 100,
-    y: 600 - 300,
-    shape: {
-      type: 'circle',
-      radius: 100,
-      x: 700,
-      y: 600,
-    },
-  },
-  {
-    type: 'image',
-    src: 'https://images.unsplash.com/photo-1749497683202-d3073573d996?q=80&w=1247&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    width: 300,
-    height: 300,
-    x: 200 - 150,
-    y: 950 - 150,
-    shape: {
-      type: 'ellipse',
-      radiusX: 150,
-      radiusY: 100,
-      x: 50,
-      y: 800,
-    },
-  },
-  {
-    type: 'text',
-    x: 300,
-    y: 360,
-    width: 36,
-    height: 20,
-    text: 'Hello',
-    color: 'amber',
-  },
-  {
-    type: 'rectangle',
-    x: 300,
-    y: 360,
-    width: 36,
-    height: 12,
-  },
-  {
-    type: 'ellipse',
-    radiusX: 75,
-    radiusY: 50,
-    x: 400,
-    y: 800,
-    color: '#BCB8B1',
-    isFilled: true,
-  },
+  // {
+  //   type: 'rectangle',
+  //   width: 500,
+  //   height: 180,
+  //   x: 400,
+  //   y: 80,
+  //   isFilled: true,
+  //   color: '#64363C',
+  // },
+  // {
+  //   type: 'rectangle',
+  //   width: 250,
+  //   height: 270,
+  //   x: 600,
+  //   y: 20,
+  //   isFilled: true,
+  //   color: '#6E552F',
+  // },
+  // {
+  //   type: 'image',
+  //   src: 'https://images.unsplash.com/photo-1649980089975-c3e5c2d73ad8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //   width: 387,
+  //   height: 518,
+  //   x: 700 - 100,
+  //   y: 600 - 300,
+  //   opacity: 0.3,
+  // },
+  // {
+  //   type: 'image',
+  //   src: 'https://images.unsplash.com/photo-1649980089975-c3e5c2d73ad8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //   width: 200,
+  //   height: 200,
+  //   x: 200 - 100,
+  //   y: 600 - 100,
+  //   shape: {
+  //     type: 'circle',
+  //     radius: 100,
+  //     x: 100,
+  //     y: 500,
+  //   },
+  // },
+  // {
+  //   type: 'image',
+  //   src: 'https://images.unsplash.com/photo-1649980089975-c3e5c2d73ad8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //   width: 200,
+  //   height: 259,
+  //   x: 450 - 100,
+  //   y: 600 - 100,
+  //   shape: {
+  //     type: 'circle',
+  //     radius: 100,
+  //     x: 350,
+  //     y: 500,
+  //   },
+  // },
+  // {
+  //   type: 'image',
+  //   src: 'https://images.unsplash.com/photo-1649980089975-c3e5c2d73ad8?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //   width: 387,
+  //   height: 518,
+  //   x: 700 - 100,
+  //   y: 600 - 300,
+  //   shape: {
+  //     type: 'circle',
+  //     radius: 100,
+  //     x: 700,
+  //     y: 600,
+  //   },
+  // },
+  // {
+  //   type: 'image',
+  //   src: 'https://images.unsplash.com/photo-1749497683202-d3073573d996?q=80&w=1247&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //   width: 300,
+  //   height: 300,
+  //   x: 200 - 150,
+  //   y: 950 - 150,
+  //   shape: {
+  //     type: 'ellipse',
+  //     radiusX: 150,
+  //     radiusY: 100,
+  //     x: 50,
+  //     y: 800,
+  //   },
+  // },
+  // {
+  //   type: 'text',
+  //   x: 300,
+  //   y: 360,
+  //   width: 36,
+  //   height: 20,
+  //   text: 'Hello',
+  //   color: 'amber',
+  // },
+  // {
+  //   type: 'rectangle',
+  //   x: 300,
+  //   y: 360,
+  //   width: 36,
+  //   height: 12,
+  // },
+  // {
+  //   type: 'ellipse',
+  //   radiusX: 75,
+  //   radiusY: 50,
+  //   x: 400,
+  //   y: 800,
+  //   color: '#BCB8B1',
+  //   isFilled: true,
+  // },
 ];
 
 const Workbench = () => {
@@ -147,10 +147,12 @@ const Workbench = () => {
   const assistantCanvasRef = useRef<HTMLCanvasElement>(null);
   const canvasCoordinate = useRef({ x: 0, y: 0 });
 
-  const [gridData] = useState(initialGridData);
-  const [assistantGridData] = useState<ElementOptions[]>([]);
+  const [gridData, setGridData] = useState(initialGridData);
+  const [assistantGridData, setAssistantGridData] = useState<ElementOptions[]>(
+    [],
+  );
   const [pendingElementData, setPendingElementData] =
-    useState<Partial<Element>>();
+    useState<Partial<ElementOptions>>();
   const [canvasStatus, setCanvasStatus] = useState<CanvasStatus | null>(null);
 
   const handleSelectElement = (elementType: Element['type']) => {
@@ -176,11 +178,20 @@ const Workbench = () => {
       };
     }
 
-    setPendingElementData((prev) => ({
-      ...prev,
-      ...coordinate,
-      ...size,
-    }));
+    // setPendingElementData((prev) => ({
+    //   ...prev,
+    //   ...coordinate,
+    //   ...size,
+    // }));
+
+    setAssistantGridData([
+      {
+        ...pendingElementData,
+        ...coordinate,
+        ...size,
+      },
+    ]);
+    setPendingElementData(undefined);
   };
 
   const handleClickCanvas = (e: MouseEvent<HTMLCanvasElement>) => {
@@ -188,18 +199,36 @@ const Workbench = () => {
       x: e.clientX - canvasCoordinate?.current.x,
       y: e.clientY - canvasCoordinate?.current.y,
     };
-    const targetElements = gridData.filter((data) => {
-      return isPointInsideElement(coordinate, data);
-    });
+    const { targetElements, restElements } = gridData.reduce<{
+      targetElements: ElementOptions[];
+      restElements: ElementOptions[];
+    }>(
+      (res, curr) => {
+        if (isPointInsideElement(coordinate, curr)) {
+          return {
+            ...res,
+            targetElements: [...res.targetElements, curr],
+          };
+        }
 
-    if (canvasStatus === CanvasStatus.Selected) {
-      console.log('handleAddElement');
-      handleAddElement(coordinate);
-      console.log('set to target');
-      setCanvasStatus(CanvasStatus.Targeted);
-      // TODO: 把剛剛加上去的元素設到assistantGridData、把pendingElementData清掉
-      return;
-    }
+        return {
+          ...res,
+          restElements: [...res.restElements, curr],
+        };
+      },
+      {
+        targetElements: [],
+        restElements: [],
+      },
+    );
+
+    // if (canvasStatus === CanvasStatus.Selected) {
+    //   console.log('handleAddElement');
+    //   handleAddElement(coordinate);
+    //   setCanvasStatus(CanvasStatus.Targeted);
+
+    //   return;
+    // }
 
     if (targetElements.length < 1 || canvasStatus === CanvasStatus.Manipulate) {
       console.log('set to null');
@@ -207,8 +236,10 @@ const Workbench = () => {
       return;
     }
 
-    // TODO: 更換選擇到的已存在的元素、更新assistantGridData
     console.log('set to target');
+    setAssistantGridData([targetElements[0]]);
+    setGridData(restElements);
+
     setCanvasStatus(CanvasStatus.Targeted);
   };
 
@@ -226,6 +257,7 @@ const Workbench = () => {
     const ctx = canvasRef.current?.getContext('2d');
 
     if (ctx) {
+      ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
       gridData.forEach((data) => {
         drawElement(ctx, data);
       });
@@ -246,6 +278,7 @@ const Workbench = () => {
 
   return (
     <div className="bg-neutral-900 flex flex-col items-center gap-4 p-8">
+      {/* <h1>{canvasStatus}</h1> */}
       {/* TODO: install a UI lib which supports Tailwind 4 */}
       <div className="flex rounded overflow-hidden bg-zinc-500 [&_button]:not-last:border-r">
         {(['rectangle', 'circle', 'text'] as const).map((elementType) => (
@@ -277,6 +310,46 @@ const Workbench = () => {
           width={CANVAS_WIDTH}
           height={CANVAS_HEIGHT}
           onClick={handleClickCanvas}
+          onMouseDown={(e) => {
+            const coordinate = {
+              x: e.clientX - canvasCoordinate?.current.x,
+              y: e.clientY - canvasCoordinate?.current.y,
+            };
+
+            if (canvasStatus === CanvasStatus.Selected) {
+              console.log('handleAddElement');
+              handleAddElement(coordinate);
+              setCanvasStatus(CanvasStatus.Targeted);
+
+              return;
+            }
+          }}
+          onMouseMove={() => {
+            if (canvasStatus === CanvasStatus.Targeted) {
+              setCanvasStatus(CanvasStatus.Manipulate);
+            }
+          }}
+          onMouseUp={(e) => {
+            console.log(666);
+            if (canvasStatus === CanvasStatus.Manipulate) {
+              setAssistantGridData((prev) => {
+                const foo = prev[0];
+                const bar = {
+                  x: e.clientX - canvasCoordinate?.current.x - foo.x,
+                  y: e.clientY - canvasCoordinate?.current.y - foo.y,
+                };
+
+                return [
+                  {
+                    ...foo,
+                    width: bar.x,
+                    height: bar.y,
+                  },
+                ];
+              });
+              setCanvasStatus(CanvasStatus.Targeted);
+            }
+          }}
         ></canvas>
       </div>
     </div>
