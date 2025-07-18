@@ -1,11 +1,11 @@
 import { describe, test, expect } from 'vitest';
 
-import { isPointInsideShape, isPointOnShapeBorder } from '@/utils';
+import { isPointInsideElement, isPointOnElementBorder } from '@/utils';
 
-describe('test isPointInsideShape', () => {
+describe('test isPointInsideElement', () => {
   test('check if it works on rectangle', () => {
     expect(
-      isPointInsideShape(
+      isPointInsideElement(
         { x: 1, y: 1 },
         {
           type: 'rectangle',
@@ -18,7 +18,7 @@ describe('test isPointInsideShape', () => {
     ).equal(true);
 
     expect(
-      isPointInsideShape(
+      isPointInsideElement(
         { x: 45, y: 3 },
         {
           type: 'rectangle',
@@ -33,36 +33,36 @@ describe('test isPointInsideShape', () => {
 
   test('check if it works on circle', () => {
     expect(
-      isPointInsideShape(
+      isPointInsideElement(
         { x: 5, y: 10 },
         {
           type: 'circle',
-          centerX: 10,
-          centerY: 10,
+          x: 0,
+          y: 0,
           radius: 10,
         },
       ),
     ).equal(true);
 
     expect(
-      isPointInsideShape(
+      isPointInsideElement(
         { x: 5, y: 5 },
         {
           type: 'circle',
-          centerX: 10,
-          centerY: 10,
+          x: 0,
+          y: 0,
           radius: 10,
         },
       ),
     ).equal(true);
 
     expect(
-      isPointInsideShape(
+      isPointInsideElement(
         { x: 5, y: 1 },
         {
           type: 'circle',
-          centerX: 10,
-          centerY: 10,
+          x: 0,
+          y: 0,
           radius: 10,
         },
       ),
@@ -70,10 +70,10 @@ describe('test isPointInsideShape', () => {
   });
 });
 
-describe('test isPointOnShapeBorder', () => {
+describe('test isPointOnElementBorder', () => {
   test('check if it works on rectangle', () => {
     expect(
-      isPointOnShapeBorder(
+      isPointOnElementBorder(
         { x: 0, y: 5 },
         {
           type: 'rectangle',
@@ -86,7 +86,7 @@ describe('test isPointOnShapeBorder', () => {
     ).equal(true);
 
     expect(
-      isPointOnShapeBorder(
+      isPointOnElementBorder(
         { x: 5, y: 5 },
         {
           type: 'rectangle',
@@ -101,36 +101,36 @@ describe('test isPointOnShapeBorder', () => {
 
   test('check if it works on circle', () => {
     expect(
-      isPointOnShapeBorder(
+      isPointOnElementBorder(
         { x: 20, y: 10 },
         {
           type: 'circle',
-          centerX: 10,
-          centerY: 10,
+          x: 10,
+          y: 10,
           radius: 10,
         },
       ),
     ).equal(true);
 
     expect(
-      isPointOnShapeBorder(
+      isPointOnElementBorder(
         { x: 13.09, y: 19.51 },
         {
           type: 'circle',
-          centerX: 10,
-          centerY: 10,
+          x: 0,
+          y: 0,
           radius: 10,
         },
       ),
     ).equal(true);
 
     expect(
-      isPointOnShapeBorder(
+      isPointOnElementBorder(
         { x: 20, y: 20 },
         {
           type: 'circle',
-          centerX: 10,
-          centerY: 10,
+          x: 10,
+          y: 10,
           radius: 10,
         },
       ),
