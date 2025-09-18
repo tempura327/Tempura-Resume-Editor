@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router';
 
 import Workbench from '@/pages/Workbench';
+import SelectTheme from '@/pages/SelectTheme';
 
 const routes = [
   {
@@ -8,6 +9,10 @@ const routes = [
     // TODO:
     // element: <Layout routes={appbarList} />,
     children: [
+      {
+        path: '',
+        element: <SelectTheme />,
+      },
       {
         path: '/workbench',
         element: <Workbench />,
