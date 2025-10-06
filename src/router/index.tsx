@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router';
 
+import SelectLayout from '@/pages/SelectLayout';
 import Workbench from '@/pages/Workbench';
 
 const routes = [
@@ -8,6 +9,10 @@ const routes = [
     // TODO:
     // element: <Layout routes={appbarList} />,
     children: [
+      {
+        path: '/',
+        element: <SelectLayout />,
+      },
       {
         path: '/workbench',
         element: <Workbench />,
