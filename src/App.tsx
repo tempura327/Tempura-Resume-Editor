@@ -5,9 +5,9 @@ import router from '@/router';
 
 function App() {
   return (
-    <div>
+    <main className="w-2/3 py-8 mx-auto">
       <RouterProvider router={router} />
-    </div>
+    </main>
   );
 }
 
